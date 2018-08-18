@@ -1,5 +1,7 @@
 # README
 
+## Steps I did to create this repo suitable to download
+
 ```bash
 cd /Users/psenger/Documents/Dev/gosample
 export GOPATH=$(pwd)
@@ -20,30 +22,26 @@ curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
 ```
 
 * go get this zip file with a browser.*
-1. (https://github.com/google/protobuf/releases/download/v3.6.1/protoc-3.6.1-osx-x86_64.zip)[https://github.com/google/protobuf/releases/download/v3.6.1/protoc-3.6.1-osx-x86_64.zip]
-2. Copy all the code and directories into ```bin/*``` and ```$GOPATH/bin```
-3. But the include should be in the bin directory
+1. [https://github.com/google/protobuf/releases/download/v3.6.1/protoc-3.6.1-osx-x86_64.zip](https://github.com/google/protobuf/releases/download/v3.6.1/protoc-3.6.1-osx-x86_64.zip)
+2. Copy everything _protoc-3.6.1-osx-x86_64/bin/_ from the zip file into ```$GOPATH/bin/``` directory ( so you will move this down a directory from where it was stored in the zip file ).
+3. Copy everything _protoc-3.6.1-osx-x86_64/lib/_ from the zip file into ```$GOPATH/bin/lib``` directory.
 
 ```
-$ cd /Users/psenger/Downloads/
-
-$ cd /Users/psenger/Downloads/protoc-3.6.1-osx-x86_64
-$ mv bin/* $GOPATH/bin/
-$ mv include/ $GOPATH/bin
-$ cd $GOPATH/bin && ls -la
-    total 38408
-    .
-    ..
-    dep
-    includea
-    protoc
-$
-
+cd /Users/psenger/Downloads/
+rm -rf protoc-3.6.1-osx-x86_64
+unzip protoc-3.6.1-osx-x86_64.zip -d protoc-3.6.1-osx-x86_64
+cd /Users/psenger/Downloads/protoc-3.6.1-osx-x86_64
+mv bin/* $GOPATH/bin/
+mv include/ $GOPATH/bin
 ```
 
-cd $GOPATH/src/github.com/psenger/gRPC_REST_API
+
 
 * now make the go file *
+
+```
+cd $GOPATH/src/github.com/psenger/gRPC_REST_API
+```
 
 main.go
 ----
@@ -117,6 +115,8 @@ dep ensure -add github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
 dep ensure -add github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
 go get -u github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis
 ```
+
+Now check it in to github, the vendor files should go as well as all the Gopkg stuff.
 
 ## Then when you check out
 

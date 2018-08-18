@@ -1,5 +1,6 @@
 # README
 
+```bash
 cd /Users/psenger/Documents/Dev/gosample
 export GOPATH=$(pwd)
 export PATH=$PATH:$GOPATH:$GOPATH/bin:$GOPATH/bin/include
@@ -8,16 +9,20 @@ mkdir src && cd src
 mkdir github.com && cd github.com
 mkdir psenger && cd psenger
 git clone git@github.com:psenger/gRPC_REST_API.git
+```
 
+_Enter password from *git clone*_
 
+```
 cd $GOPATH
 mkdir $GOPATH/bin
 curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+```
 
 * go get this zip file with a browser.*
-https://github.com/google/protobuf/releases/download/v3.6.1/protoc-3.6.1-osx-x86_64.zip
-Copy all the code and directories into ```bin/*``` and ```$GOPATH/bin```
-But the include should be in the bin directory
+1. (https://github.com/google/protobuf/releases/download/v3.6.1/protoc-3.6.1-osx-x86_64.zip)[https://github.com/google/protobuf/releases/download/v3.6.1/protoc-3.6.1-osx-x86_64.zip]
+2. Copy all the code and directories into ```bin/*``` and ```$GOPATH/bin```
+3. But the include should be in the bin directory
 
 ```
 $ cd /Users/psenger/Downloads/
@@ -40,7 +45,10 @@ cd $GOPATH/src/github.com/psenger/gRPC_REST_API
 
 * now make the go file *
 
----- main.go
+main.go
+----
+```
+cat > main.go
 // generates the gRPC stubs
 //go:generate protoc -Iapi -I../../../../bin/include -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis --go_out=plugins=grpc:api api/api.proto
 // generates the rest-proxy-to-gRPC server
@@ -57,9 +65,13 @@ func main () {
 	var opts []grpc.ServerOption
 }
 
+```
 
-
---- api/api.proto
+api/api.prot
+----
+```
+cat > api/api.proto
+ 
 
 syntax = "proto3";
 
@@ -82,11 +94,13 @@ service SimplService {
         };
     }
 }
----
+```
 
+----
+
+```
 cd $GOPATH/src/github.com/psenger/gRPC_REST_API
 dep init
-
 
 
 cd $GOPATH/src/github.com/psenger/gRPC_REST_API
@@ -102,3 +116,7 @@ dep ensure -add github.com/grpc-ecosystem/grpc-gateway
 dep ensure -add github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
 dep ensure -add github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
 go get -u github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis
+```
+
+
+

@@ -119,9 +119,10 @@ go get -u github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis
 ```
 
 ## Then when you check out
-``
+
+```
 export GOPATH=$(pwd)
 export PATH=$PATH:$GOPATH:$GOPATH/bin:$GOPATH/bin/include
 ln -sf vendor src
 go build main.go
-``
+```

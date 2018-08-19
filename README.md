@@ -110,6 +110,7 @@ dep ensure -add github.com/golang/protobuf/proto
 dep ensure -add github.com/golang/protobuf/protoc-gen-go
 dep ensure -add google.golang.org/grpcc
 dep ensure -add github.com/golang/protobuf <<--- this doesnt install?
+dep ensure -add github.com/grpc-ecosystem/go-grpc-middleware
 dep ensure -add github.com/grpc-ecosystem/grpc-gateway
 dep ensure -add github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
 dep ensure -add github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
@@ -124,5 +125,6 @@ Now check it in to github, the vendor files should go as well as all the Gopkg s
 export GOPATH=$(pwd)
 export PATH=$PATH:$GOPATH:$GOPATH/bin:$GOPATH/bin/include
 ln -sf vendor src
-go build main.go
+go build -o main main.go
+
 ```

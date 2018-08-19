@@ -2,31 +2,13 @@
 
 
 [[projects]]
-  digest = "1:2cd7915ab26ede7d95b8749e6b1f933f1c6d5398030684e6505940a10f31cfda"
-  name = "github.com/ghodss/yaml"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "0ca9ea5df5451ffdf184b4428c902747c2c11cd7"
-  version = "v1.0.0"
-
-[[projects]]
   branch = "master"
-  digest = "1:1ba1d79f2810270045c328ae5d674321db34e3aae468eb4233883b473c5c0467"
-  name = "github.com/golang/glog"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "23def4e6c14b4da8ac2ed8007337bc5eb5007998"
-
-[[projects]]
-  digest = "1:6d66e8a865219bc05273b10cfc81fad65f0b9023285c0f2770bd5c3a20d22654"
+  digest = "1:fa5e9e1af8a8645086811ec5ab003806026babc57c8bb3a6f7e1ab34b80e2ff1"
   name = "github.com/golang/protobuf"
   packages = [
     "jsonpb",
     "proto",
     "protoc-gen-go/descriptor",
-    "protoc-gen-go/generator",
-    "protoc-gen-go/generator/internal/remap",
-    "protoc-gen-go/plugin",
     "ptypes",
     "ptypes/any",
     "ptypes/duration",
@@ -34,25 +16,50 @@
     "ptypes/timestamp",
   ]
   pruneopts = "UT"
-  revision = "b4deda0973fb4c70b50d226b1af49f3da59f5265"
-  version = "v1.1.0"
+  revision = "aa810b61a9c79d51363740d207bb46cf8e620ed5"
 
 [[projects]]
-  digest = "1:28850ffbec46c711f667f4d6e7889e2b60e8f00e013b415e69ce910457adc2c7"
+  digest = "1:1dd79f72341b3def93efdc8e2832950c11cd591087493c7f466077543bba9a03"
+  name = "github.com/grpc-ecosystem/go-grpc-middleware"
+  packages = [
+    ".",
+    "logging",
+    "logging/logrus",
+    "logging/logrus/ctxlogrus",
+    "tags",
+    "tags/logrus",
+  ]
+  pruneopts = "UT"
+  revision = "c250d6563d4d4c20252cd865923440e829844f4e"
+  version = "v1.0.0"
+
+[[projects]]
+  digest = "1:6a06217fc753e65aea71446b777393009ef6797dadc0086c4f75bd16590be04d"
   name = "github.com/grpc-ecosystem/grpc-gateway"
   packages = [
-    "codegenerator",
-    "protoc-gen-grpc-gateway/descriptor",
-    "protoc-gen-grpc-gateway/generator",
-    "protoc-gen-grpc-gateway/httprule",
-    "protoc-gen-swagger",
-    "protoc-gen-swagger/genswagger",
-    "protoc-gen-swagger/options",
+    "runtime",
+    "runtime/internal",
     "utilities",
   ]
   pruneopts = "UT"
   revision = "92583770e3f01b09a0d3e9bdf64321d8bebd48f2"
   version = "v1.4.1"
+
+[[projects]]
+  digest = "1:d867dfa6751c8d7a435821ad3b736310c2ed68945d05b50fb9d23aee0540c8cc"
+  name = "github.com/sirupsen/logrus"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "3e01752db0189b9157070a0e1668a620f9a85da2"
+  version = "v1.0.6"
+
+[[projects]]
+  branch = "master"
+  digest = "1:3f3a05ae0b95893d90b9b3b5afdb79a9b3d96e4e36e099d841ae602e4aca0da8"
+  name = "golang.org/x/crypto"
+  packages = ["ssh/terminal"]
+  pruneopts = "UT"
+  revision = "aabede6cba87e37f413b3e60ebfc214f8eeca1b0"
 
 [[projects]]
   branch = "master"
@@ -72,9 +79,12 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:05662433b3a13c921587a6e622b5722072edff83211efd1cd79eeaeedfd83f07"
+  digest = "1:2f71657f09ff05e4567909e9e0de7ad799828c96d402c540b41dc044a6590fb2"
   name = "golang.org/x/sys"
-  packages = ["unix"]
+  packages = [
+    "unix",
+    "windows",
+  ]
   pruneopts = "UT"
   revision = "1c9583448a9c3aa0f9a6a5241bf73c0bd8aafded"
 
@@ -113,7 +123,7 @@
   revision = "c66870c02cf823ceb633bcd05be3c7cda29976f4"
 
 [[projects]]
-  digest = "1:3dd7996ce6bf52dec6a2f69fa43e7c4cefea1d4dfa3c8ab7a5f8a9f7434e239d"
+  digest = "1:76332e947f184a2dc091db40f22c7089ada36bbc577793074639695af85a10fd"
   name = "google.golang.org/grpc"
   packages = [
     ".",
@@ -136,6 +146,8 @@
     "metadata",
     "naming",
     "peer",
+    "reflection",
+    "reflection/grpc_reflection_v1alpha",
     "resolver",
     "resolver/dns",
     "resolver/passthrough",
@@ -147,21 +159,19 @@
   revision = "32fb0ac620c32ba40a4626ddf94d90d12cce3455"
   version = "v1.14.0"
 
-[[projects]]
-  digest = "1:342378ac4dcb378a5448dd723f0784ae519383532f5e70ade24132c4c8693202"
-  name = "gopkg.in/yaml.v2"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "5420a8b6744d3b0345ab293f6fcba19c978f1183"
-  version = "v2.2.1"
-
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
     "github.com/golang/protobuf/proto",
-    "github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger",
+    "github.com/grpc-ecosystem/go-grpc-middleware",
+    "github.com/grpc-ecosystem/go-grpc-middleware/logging/logrus",
+    "github.com/grpc-ecosystem/grpc-gateway/runtime",
+    "github.com/sirupsen/logrus",
+    "golang.org/x/net/context",
+    "google.golang.org/genproto/googleapis/api/annotations",
     "google.golang.org/grpc",
+    "google.golang.org/grpc/reflection",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1

@@ -18,6 +18,7 @@ import (
 	"github.com/psenger/gRPC_REST_API/server"
 	"net/http"
 	"fmt"
+	"github.com/spf13/viper"
 )
 
 type AppServer struct {
@@ -79,6 +80,12 @@ func init() {
 }
 
 func main() {
+	err := viper.ReadInConfig() // Find and read the config file
+	if err != nil { // Handle errors reading the config file
+		panic(fmt.Errorf("Fatal error config file: %s \n", err))
+	}
+	gRPCAddress := viper.GetString("gRPCAddress")
+	fmt.Print(gRPCAddress)
 	application := AppServer{
 		gRPCAddress: ":9191",
 		restAddress: ":8080",

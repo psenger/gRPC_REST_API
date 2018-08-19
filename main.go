@@ -15,7 +15,9 @@ import (
 	"google.golang.org/grpc/reflection"
 	log "github.com/sirupsen/logrus"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
+	"github.com/psenger/gRPC_REST_API/server"
 	"net/http"
+	"fmt"
 )
 
 type AppServer struct {
@@ -54,11 +56,33 @@ func ( app *AppServer) startRESTServer() error {
 	mux := runtime.NewServeMux()
 
 	opts := []grpc.DialOption{ grpc.WithInsecure() }
-	err := api.RegisterSimplServiceServer( ctx, mux, app.gRPCAddress, opts )
+
+	err := api.RegisterSimplServiceHandlerFromEndpoint( ctx, mux, app.gRPCAddress, opts )
 	if err != nil {
 		return err
 	} else {
 		return http.ListenAndServe(  app.restAddress, mux  )
 	}
 
+}
+
+func ( app *AppServer ) start() {
+	errors := make(chan error)
+	go func() { errors <- fmt.Errorf("GRPC Server Faield To Start: %v", app.startGRPCServer() )}()
+	go func() { errors <- fmt.Errorf("REST Server Faield To Start: %v", app.startRESTServer() )}()
+	log.Fatal(<-errors)
+}
+
+func init() {
+	log.SetFormatter( &log.TextFormatter{FullTimestamp:true})
+	log.SetLevel(log.DebugLevel)
+}
+
+func main() {
+	application := AppServer{
+		gRPCAddress: "9191",
+		restAddress: "8080",
+		server:      server.NewGrpcHelloService(),
+	}
+	application.start()
 }

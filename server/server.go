@@ -1,4 +1,4 @@
-package main
+package server
 
 import (
 	"github.com/psenger/gRPC_REST_API/api"

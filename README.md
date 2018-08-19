@@ -104,7 +104,9 @@ dep init
 cd $GOPATH/src/github.com/psenger/gRPC_REST_API
 
 go get -u github.com/golang/protobuf/protoc-gen-go
+go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
 go install github.com/golang/protobuf/protoc-gen-go
+go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
 
 dep ensure -add github.com/golang/protobuf/proto
 dep ensure -add github.com/golang/protobuf/protoc-gen-go

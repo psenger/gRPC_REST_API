@@ -80,8 +80,8 @@ func init() {
 
 func main() {
 	application := AppServer{
-		gRPCAddress: "9191",
-		restAddress: "8080",
+		gRPCAddress: ":9191",
+		restAddress: ":8080",
 		server:      server.NewGrpcHelloService(),
 	}
 	application.start()

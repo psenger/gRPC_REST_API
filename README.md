@@ -181,11 +181,12 @@ go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
 go install github.com/golang/protobuf/protoc-gen-go
 go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
 
-# attempting to get dep updatdate ( sigh )
+# attempting to get dep updatedate ( sigh )
 dep ensure -add github.com/golang/protobuf/proto
 dep ensure -add github.com/golang/protobuf/protoc-gen-go
 dep ensure -add google.golang.org/grpcc
 dep ensure -add github.com/golang/protobuf <<--- this doesnt install?
+dep ensure -add github.com/dgrijalva/jwt-go
 dep ensure -add github.com/grpc-ecosystem/go-grpc-middleware
 dep ensure -add github.com/grpc-ecosystem/grpc-gateway
 dep ensure -add github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway

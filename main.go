@@ -80,10 +80,12 @@ func init() {
 }
 
 func main() {
-	err := viper.ReadInConfig() // Find and read the config file
-	if err != nil { // Handle errors reading the config file
-		panic(fmt.Errorf("Fatal error config file: %s \n", err))
-	}
+	viper.AddConfigPath(".")
+	viper.AutomaticEnv()
+	//err := viper.ReadInConfig() // Find and read the config file
+	//if err != nil { // Handle errors reading the config file
+	//	panic(fmt.Errorf("Fatal error config file: %s \n", err))
+	//}
 	gRPCAddress := viper.GetString("gRPCAddress")
 	fmt.Print(gRPCAddress)
 	application := AppServer{
